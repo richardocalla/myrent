@@ -1,0 +1,120 @@
+#{extends 'main.html' /} #{set title:'Reports' /}
+
+<nav class="ui inverted menu">
+	<a class="ui item" href="/">Welcome</a> <a class="ui item"
+		href="/admins/admin">Administrator</a> <a class="ui active item"
+		href="/admins/reports">Reports</a> <a class="ui item"
+		href="/admins/charts">Charts</a> <a class="ui item" href="/contact">Contact</a>
+	<a class="ui item" href="/admins/logout">Log Out</a>
+</nav>
+
+<section class="ui segment">
+	<h4>Report filtering</h4>
+	<table class="ui table segment">
+		<thead>
+			<tr>
+				<th>Eircode</th>
+				<th>Date</th>
+				<th>Type</th>
+				<th>Number bedrooms</th>
+				<th>Number bathrooms</th>
+				<th>Rent(&euro;)</th>
+				<th>Area (m<sup>2</sup>)
+				</th>
+				<th>Landlord</th>
+				<th>Tenant</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>#{list items:residences, as:'residence'}
+			</tr>
+			<td>${residence.eircode}</td>
+			<td>${residence.dateResidence.format('dd MMMM yyyy', 'en')}</td>
+			<td>${residence.residenceType}</td>
+			<td>${residence.numberBedrooms}</td>
+			<td>${residence.numberBathrooms}</td>
+			<td>${residence.rent.format('#')}</td>
+			<td>${residence.area}</td>
+			<td>${residence.landlord.firstName}
+				${residence.landlord.lastName}</td>
+			<td>${residence.tenant?.firstName} ${residence.tenant?.lastName}</td>
+			#{/list}
+		</tbody>
+	</table>
+</section>
+<section class="ui segment">
+	<div class="ui grid">
+		<div class="four wide column">
+			<!-- Filter: by tenant -->
+			<div class="ui form">
+				<div class="ui fluid form segment">
+					<i class="privacy icon"></i> <input name="rentedStatus"
+						type="hidden"> <span class="text">By Rented</span>
+					<div class="ui buttons">
+						<form action="/admins/byrented" method="GET">
+							<button class="ui button">Ascending</button>
+						</form>
+						<div class="or"></div>
+						<form action="/admins/byrenteddesc" method="GET">
+							<button class="ui positive button">Descending</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="four wide column">
+			<!-- Filter: list by type -->
+			<div class="ui form">
+				<div class="ui fluid form segment">
+					<i class="home icon"></i> <input name="residenceType" type="hidden">
+					<span class="text">By Type</span>
+					<div class="ui buttons">
+						<form action="/admins/byresidencetype" method="GET">
+							<button class="ui button">Ascending</button>
+						</form>
+						<div class="or"></div>
+						<form action="/admins/byresidencetypedesc" method="GET">
+							<button class="ui positive button">Descending</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="four wide column">
+			<!-- Filter: sort ascending/descending rent per residence -->
+			<div class="ui form">
+				<div class="ui fluid form segment">
+					<i class="money icon"></i> <input name="sortDirection"
+						type="hidden"> <span class="text">Rent (&euro;)</span>
+					<div class="ui buttons">
+						<form action="/admins/bysortedrent" method="GET">
+							<button class="ui button">Ascending</button>
+						</form>
+						<div class="or"></div>
+						<form action="/admins/bysortedrentdesc" method="GET">
+							<button class="ui positive button">Descending</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="four wide column">
+			<!-- Filter: sort ascending/descending by eircode -->
+			<div class="ui form">
+				<div class="ui fluid form segment">
+					<i class="refresh icon"></i> <input name="sortDirection"
+						type="hidden"> <span class="text">Eircode</span>
+					<div class="ui buttons">
+						<form action="/admins/filter" method="GET">
+							<button class="ui button">Ascending</button>
+						</form>
+						<div class="or"></div>
+						<form action="/admins/filterdesc" method="GET">
+							<button class="ui positive button">Descending</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

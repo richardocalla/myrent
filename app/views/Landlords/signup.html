@@ -1,0 +1,48 @@
+#{extends 'main.html' /} #{set title:'Signup to MyRent' /}
+
+<nav class="ui inverted menu">
+	<a class="ui item" href="/">Welcome</a> <a class="ui active item"
+		href="/landlords/signup">Sign Up</a> <a class="ui item"
+		href="/landlords/login">Log In</a> <a class="ui item" href="/contact">Contact</a>
+</nav>
+
+<section class="ui segment">
+	<h3>Landlords: Create a MyRent account</h3>
+	<h5>Register using a valid email address</h5>
+	<form class="ui form segment" action="/landlords/register"
+		method="POST">
+		<div class="ui two column grid">
+			<div class="column">
+				<div class="ui fluid form segment">
+					<div class="two fields">
+						<div class="input field">
+							<input placeholder="First Name" id="firstName" name="landlord.firstName"
+								type="text">
+						</div>
+						<div class="input field">
+							<input placeholder="Last Name" id="lastName" name="landlord.lastName"
+								type="text">
+						</div>
+					</div>
+					<div class="ui left icon input field">
+						<input placeholder="Email" id="email" name="landlord.email" type="text">
+						<i class="user icon"></i>
+					</div>
+					<div class="ui left icon input field">
+						<input placeholder="Password" id="password" name="landlord.password"
+							type="password"> <i class="lock icon"></i>
+					</div>
+					<div class="inline field">
+						<div class="ui checkbox">
+							<input id="conditions" type="checkbox"> <label
+								for="conditions">I agree to the terms and conditions</label>
+						</div>
+					</div>
+					<button type="submit" class="ui blue submit button">Submit</button>
+					<div class="ui error message"></div>
+				</div>
+			</div>
+		</div>
+	</form>
+</section>
+<script src="/public/javascripts/validation.js"></script>

@@ -1,0 +1,59 @@
+#{extends 'main.html' /} #{set title:'Report' /}
+
+<nav class="ui inverted menu">
+	<a class="ui item" href="/">Welcome</a> <a class="ui item"
+		href="/signup">Sign Up</a> <a class="ui item" href="/login">Log In</a>
+	<a class="ui item" href="/inputdata">Input Data</a> <a
+		class="ui active item" href="/report">Report</a> <a class="ui item"
+		href="/landlords/editprofile">Edit Profile</a> <a class="ui item"
+		href="/contact">Contact</a> <a class="ui item" href="/logout">Log
+		Out</a>
+</nav>
+
+<section class="ui segment">
+	<h4>Report</h4>
+	<section class="ui segment">
+		<table class="ui table segment">
+			<thead>
+				<tr>
+					<th>Commissioned by</th>
+					<th>Search: radius(m)</th>
+					<th>centre (latitude)</th>
+					<th>centre (longitude)</tdh>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>${landlord.firstName} ${landlord.lastName}</td>
+					<td>${circle.radius.format('#.0')}</td>
+					<td>${circle.latcenter.format('#.00000')}</td>
+					<td>${circle.lngcenter.format('#.00000')}</td>
+				</tr>
+			</tbody>
+		</table>
+		<table class="ui table segment">
+			<thead>
+				<tr>
+					<th>Residence Id</th>
+					<th>Residence Landlord</th>
+					<th>Date Registered</th>
+					<th>Rent (&euro;)</th>
+					<th>Bedrooms</th>
+					<th>Bathrooms</th>
+					<th>Area (m<sup>2</sup>)</th>
+			</thead>
+			<tbody>
+				<tr>#{list items:residences, as:'residence'}
+				</tr>
+				<td>${residence.id}</td>
+				<td>${residence.landlord.firstName}
+					${residence.landlord.lastName}</td>
+				<td>${residence.dateResidence.format('dd MMMM yyyy', 'en')}</td>
+				<td>${residence.rent.format('#')}</td>
+				<td>${residence.numberBedrooms}</td>
+				<td>${residence.numberBathrooms}</td>
+				<td>${residence.area}</td> #{/list}
+			</tbody>
+		</table>
+	</section>
+</section>

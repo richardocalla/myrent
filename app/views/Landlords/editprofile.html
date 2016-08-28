@@ -1,0 +1,52 @@
+#{extends 'main.html' /} #{set title:'Edit Profile (Landlord)' /}
+
+<nav class="ui inverted menu">
+	<a class="ui item" href="/">Welcome</a> <a class="ui item"
+		href="/landlords/landlord">Landlord</a> <a class="ui active item"
+		href="/landlords/editprofile">Edit Profile</a> <a class="ui item"
+		href="/contact">Contact</a> <a class="ui item"
+		href="/landlords/logout">Log Out</a>
+</nav>
+
+<section class="ui segment">
+	<h3>You may edit your profile here</h3>
+	<form class="ui form segment" action="/landlords/editprofile/edit" method="POST">
+		<div class="ui form">
+			<div class="input fields">
+				<div class="four wide input field">
+					<label>First name</label> <input value=${landlord.firstName}
+						id="firstName" name="firstName" type="text">
+				</div>
+				<div class="four wide input field">
+					<label>Last name</label> <input value=${landlord.lastName}
+						id="lastName" name="lastName" type="text">
+				</div>
+			</div>
+			<div class="input fields">
+				<div class="four wide input field">
+					<label>Address Line 1</label> <input value=${landlord.address1}
+						id="address1" name="address1" type="text">
+				</div>
+				<div class="four wide input field">
+					<label>Address Line 2</label> <input value=${landlord.address2}
+						id="address2" name="address2" type="text">
+				</div>
+			</div>
+			<div class="input fields">
+				<div class="four wide input field">
+					<label>City</label> <input value=city name=${landlord.city}
+						id="city" type="text">
+				</div>
+				<div class="four wide input field">
+					<label>County</label> <input value=county name=${landlord.county}
+						id="county" type="text">
+				</div>
+			</div>
+			<button type="submit" class="ui blue submit button">Submit</button>
+			<div class="ui error message"></div>
+			<input type="button" class="ui blue submit button" value="Cancel"
+				onClick="history.go(-1);return true;"></input>
+		</div>
+	</form>
+</section>
+<script src="/public/javascripts/validation.js"></script>

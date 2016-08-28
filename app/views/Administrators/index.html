@@ -1,0 +1,91 @@
+#{extends 'main.html' /} #{set title:'Administrator' /}
+
+<nav class="ui inverted menu">
+	<a class="ui item" href="/">Welcome</a> <a class="ui active item"
+		href="/admins/admin">Administrator</a> <a class="ui item"
+		href="/admins/reports">Reports</a> <a class="ui item"
+		href="/admins/charts">Charts</a> <a class="ui item" href="/contact">Contact</a>
+	<a class="ui item" href="/admins/logout">Log Out</a>
+</nav>
+
+<section class="ui segment">
+	<h3>Administration page</h3>
+	<h5>Landlords and Tenants</h5>
+	<div class="ui three column grid">
+		<div class="column">
+			<form action="/landlords/signup" method="GET">
+				<div class="ui fluid form segment">
+					<button type="submit" class="ui fluid blue submit button">Register
+						landlord</button>
+				</div>
+			</form>
+			<br>
+			<form action="/tenants/signup" method="GET">
+				<div class="ui fluid form segment">
+					<button type="submit" class="ui fluid blue submit button">Register
+						tenant</button>
+				</div>
+			</form>
+			<!-- <form class="ui form segment landlord" action="/admins/deletelandlord"
+				method="POST"> -->
+			<form class="ui form segment landlord">
+				<div id="deletelandlord"
+					class="ui fluid selection dropdown landlord">
+					<input name="email_landlord" type="hidden"
+						id="form_delete_landlord">
+					<div class="default text">Select landlord to delete</div>
+					<i class="dropdown icon"></i>
+					<div class="menu landlord">
+						#{list items:landlords, as:'landlord'}
+						<div class="item landlord" data-value="${landlord.email}">${landlord.email}</div>
+						#{/list}
+					</div>
+				</div>
+				<div class="ui fluid form segment">
+					<div id="notificationLandlord"></div>
+				</div>
+				<div class="ui fluid form segment">
+					<button type="submit" class="ui fluid blue submit button">Delete
+						landlord</button>
+					<div class="ui error message"></div>
+				</div>
+			</form>
+			<!--  <form class="ui form segment tenant" action="/admins/deletetenant"
+				method="POST"> -->
+			<form class="ui form segment tenant">
+				<div id="deletetenant" class="ui fluid selection dropdown">
+					<input name="email_tenant" type="hidden" id="form_delete_tenant">
+					<div class="default text">Select tenant to delete</div>
+					<i class="dropdown icon"></i>
+					<div class="menu">
+						#{list items:tenants, as:'tenant'}
+						<div class="item tenant" data-value="${tenant.email}">${tenant.email}</div>
+						#{/list}
+					</div>
+				</div>
+				<div class="ui fluid form segment">
+					<div id="notificationTenant"></div>
+				</div>
+				<div class="ui fluid form segment">
+					<button type="submit" class="ui fluid blue submit button">Delete
+						tenant</button>
+					<div class="ui error message"></div>
+				</div>
+			</form>
+		</div>
+		<!-- end first column -->
+		<!-- The map representing residence locations -->
+		<div class="ui fluid form segment">
+			<div class="column">
+				<h5>Single click on marker to read eircode and tenant</h5>
+				<div id="map" style="width: 500px; height: 500px;"></div>
+			</div>
+		</div>
+	</div>
+	<!-- end class ui two column grid -->
+</section>
+<script async defer
+	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDihea6U4gnxL7oAmAfwRW80Od14dnQs-g&callback=initMap"
+	type="text/javascript"></script>
+<script src="/public/javascripts/administrator_map.js"></script>
+<script src="/public/javascripts/administrators.js"></script>

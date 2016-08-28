@@ -1,0 +1,81 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET    /                                       Welcome.index
+
+# Landlords
+GET    /landlords/landlord                     Landlords.index
+GET    /landlords/signup                       Landlords.signup
+GET    /landlords/login                        Landlords.login
+GET    /landlords/logout                       Landlords.logout
+GET    /landlords/editprofile                  Landlords.editprofile
+
+POST   /landlords/authenticate                 Landlords.authenticate
+POST   /landlords/register                     Landlords.register
+POST   /landlords/editprofile/edit             Landlords.edit
+POST   /landlords/deleteresidence              Landlords.deleteResidence
+POST   /landlords/editresidence                Landlords.editResidence
+POST   /landlords/updateresidence              Landlords.updateResidence
+
+# Tenants
+GET    /tenants/tenant                         Tenants.index
+GET    /tenants/signup                         Tenants.signup
+GET    /tenants/login                          Tenants.login
+GET    /tenants/logout                         Tenants.logout
+GET    /tenants/vacantresidences               Tenants.vacantResidences
+
+POST   /tenants/authenticate                   Tenants.authenticate
+POST   /tenants/register                       Tenants.register
+POST   /tenants/endtenancy                     Tenants.endTenancy
+POST   /tenants/changetenancy                  Tenants.changeTenancy
+
+# Administrator
+GET    /admins/admin                           Administrators.index
+GET    /admins/login                           Administrators.login
+GET    /admins/logout                          Administrators.logout
+GET    /admins/geolocations                    Administrators.geoLocations
+GET    /admins/reports                         Administrators.reports
+GET    /admins/byrented                        Administrators.byRented
+GET    /admins/byrenteddesc                    Administrators.byRentedDesc
+GET    /admins/byresidencetype                 Administrators.byResidenceType
+GET    /admins/byresidencetypedesc             Administrators.byResidenceTypeDesc
+GET    /admins/bysortedrent                    Administrators.bySortedRent
+GET    /admins/bysortedrentdesc                Administrators.bySortedRentDesc
+GET    /admins/filter                          Administrators.filter
+GET    /admins/filterdesc                      Administrators.filterDesc
+GET    /admins/charts                          Administrators.charts
+GET    /admins/chartdata                       Administrators.chartData
+
+POST   /admins/authenticate                    Administrators.authenticate
+POST   /admins/deletelandlord                  Administrators.deleteLandlord
+POST   /admins/deletetenant                    Administrators.deleteTenant
+
+# Search
+POST   /search/search_results                  Search.index
+
+# Input data
+GET    /inputdata                              InputData.index
+
+POST   /inputdata/datacapture                  InputData.dataCapture
+
+# Report
+GET    /report                                 ReportController.index
+GET    /report/renderreport                    ReportController.renderReport
+
+POST   /report/generatereport                  ReportController.generateReport
+
+# Contact
+GET    /contact                                Contact.index
+
+POST   /contact/sendmessage                    Contact.sendMessage
+
+# Ignore favicon requests
+GET    /favicon.ico                            404
+
+# Map static resources from the /app/public folder to the /public path
+GET    /public/                                staticDir:public
+
+# Catch all
+*      /{controller}/{action}                  {controller}.{action}

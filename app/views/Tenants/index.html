@@ -1,0 +1,77 @@
+#{extends 'main.html' /} #{set title:'Tenants' /}
+
+<nav class="ui inverted menu">
+	<a class="ui item" href="/">Welcome</a> <a class="ui active item"
+		href="/tenants/tenant">Tenant</a> <a class="ui item" href="/contact">Contact</a>
+	<a class="ui item" href="/tenants/logout">Log Out</a>
+</nav>
+
+<section class="ui segment">
+	<div class="ui three column grid">
+		<div class="column">
+			<section class="ui segment">
+				<!-- Eircode of exist rental if any -->
+				<div class="ui form segment">
+					<h5>Existing rental (eircode)</h5>
+					<input id="exist_eircode" readonly
+						value="${tenant.residence?.eircode}" name="existingeircode"
+						type="text">
+				</div>
+			</section>
+			<section class="ui segment">
+				<h5>Press to end tenancy</h5>
+				<form class="ui form" action="/tenants/endtenancy" method="POST">
+					<div class="ui fluid form segment">
+						<!-- Terminate a tenancy - if it exists -->
+						<button type="submit" class="ui blue fluid submit button"> Terminate
+							tenancy
+						</button>
+					</div>
+				</form>
+			</section>
+			<section class="ui segment">
+				<h5>Select from vacant residences for new rental</h5>
+				<!-- Size = ${vacantResidence.size()} -->
+				<!-- <form class="ui form" action="/tenants/changetenancy" method="POST"> -->
+				<form class="ui form changeTenancy">
+					<div class="ui fluid form segment">
+						<!-- Create a new tenancy -->
+						<div class="ui fluid selection dropdown" id="eircode_residence">
+							<input name="eircode_vacancy" type="hidden">
+							<div class="default text">Vacant residences</div>
+							<i class="dropdown icon"></i>
+							<div class="menu tenant">
+								#{list items:vacantResidence, as:'residence'}
+								<div class="item" data-value="${residence.eircode}">${residence.eircode}</div>
+								#{/list}
+							</div>
+						</div>
+					</div>
+					<button type="submit" class="ui blue fluid submit button">Change
+						tenancy</button>
+					<div class="ui error message"></div>
+				</form>
+			</section>
+		</div>
+		<!-- Search for vacant residences using Google map -->
+		<div class="column">
+			<form action="/search/search_results" method="POST">
+				<section class="ui segment">
+					<div id="map_canvas" style="height: 400px;"></div>
+					<button type="submit" class="ui fluid blue submit button"
+						onclick="requestReportCircle()">Search for vacant
+						residences</button>
+				</section>
+				<div style="visibility: hidden" id="circledata">
+					<input type="text" id="radius" name="radius"> <input
+						type="text" id="latcenter" name="latcenter"> <input
+						type="text" id="lngcenter" name="lngcenter">
+				</div>
+			</form>
+		</div>
+	</div>
+</section>
+<script src="/public/javascripts/rent.js"></script>
+<script
+	src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false"></script>
+<script src="/public/javascripts/reportMapCircle.js" charset="utf-8"></script>

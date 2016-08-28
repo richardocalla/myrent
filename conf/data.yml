@@ -1,0 +1,159 @@
+Administrator(admin):
+    email: admin@witpress.ie
+    password: secret
+
+Landlord(homer):
+    firstName: Homer
+    lastName: Simpson
+    email: homer@simpson.com
+    password: secret
+    address1: address1
+    address2: address2
+    city: city
+    county: county
+    residences: [residence1, residence2, residence3, residence4, residence5]
+    
+Landlord(marge):
+    firstName: Marge
+    lastName: Simpson
+    email: marge@simpson.com
+    password: secret
+    address1: address1
+    address2: address2
+    city: city
+    county: county
+    residences: [residence6]
+
+Landlord(ned):
+    firstName: Ned
+    lastName: Flanders
+    email: ned@flanders.com
+    password: secret
+    address1: address1
+    address2: address2
+    city: city
+    county: county
+    residences: [residence7, residence8]
+
+Residence(residence1):
+    geoLocation: 53.347298,-6.268344
+    dateResidence: 2016-08-02t18:25:45.05
+    rent: 750
+    residenceType: studio
+    numberBedrooms: 1
+    numberBathrooms: 1
+    area: 65
+    eircode: W91 X934
+    vacancy: 'rented'
+    landlord: homer
+    tenant: barney
+
+Residence(residence2):
+    geoLocation: 51.8949343,-8.4688574
+    dateResidence: 2016-08-02t18:25:45.05
+    rent: 1000
+    residenceType: flat
+    numberBedrooms: 2
+    numberBathrooms: 2
+    area: 80
+    eircode: W23 X433
+    vacancy: 'vacant'
+    landlord: homer
+
+Residence(residence3):
+    geoLocation: 52.0505975,-9.5125586
+    dateResidence: 2016-08-02t18:25:45.05
+    rent: 2500
+    residenceType: house
+    numberBedrooms: 5
+    numberBathrooms: 3
+    area: 250
+    eircode: F92 DYY9
+    vacancy: 'rented'
+    landlord: homer
+    tenant: moe
+
+Residence(residence4):
+    geoLocation: 52.6745156,-8.6446387
+    dateResidence: 2016-08-02t18:25:45.05
+    rent: 1500
+    residenceType: house
+    numberBedrooms: 4
+    numberBathrooms: 2
+    area: 150
+    eircode: H91 X28D
+    vacancy: 'vacant'
+    landlord: homer
+
+Residence(residence5):
+    geoLocation: 53.3814923,-6.2715918
+    dateResidence: 2016-08-02t18:25:45.05
+    rent: 1250
+    residenceType: flat
+    numberBedrooms: 3
+    numberBathrooms: 2
+    area: 100
+    eircode: A94 X439
+    vacancy: 'vacant'
+    landlord: homer
+
+Residence(residence6):
+    geoLocation: 53.3487138,-6.2715918
+    dateResidence: 2016-08-02t19:25:45.05
+    rent: 1750
+    residenceType: house
+    numberBedrooms: 4
+    numberBathrooms: 3
+    area: 300
+    eircode: T12 X466
+    vacancy: 'rented'
+    landlord: marge
+    tenant: krusty
+
+Residence(residence7):
+    geoLocation: 53.3027816,-6.3155371
+    dateResidence: 2016-08-02t19:25:45.05
+    rent: 1750
+    residenceType: house
+    numberBedrooms: 4
+    numberBathrooms: 3
+    area: 300
+    eircode: H91 W7Y2
+    vacancy: 'vacant'
+    landlord: ned
+             
+Residence(residence8):
+    geoLocation: 53.2830812,-9.0511328
+    dateResidence: 2016-08-02t19:25:45.05
+    rent: 1750
+    residenceType: flat
+    numberBedrooms: 4
+    numberBathrooms: 3
+    area: 300
+    eircode: U94 D922
+    vacancy: 'vacant'
+    landlord: ned
+    
+Tenant(barney):
+    firstName: Barney
+    lastName: Gumble
+    email: barney@gumble.com
+    password: secret
+    resRef: 12345
+    residence: residence1
+
+Tenant(moe):
+    firstName: Moe
+    lastName: Szyslak
+    email: moe@szyslak.com
+    password: secret
+    resRef: 23456
+    residence: residence3
+
+Tenant(krusty):
+    firstName: Krusty
+    lastName: Clown
+    email: krusty@clown.com
+    password: secret
+    resRef: 34567
+    residence: residence6

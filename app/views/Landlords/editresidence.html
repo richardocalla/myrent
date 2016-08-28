@@ -1,0 +1,48 @@
+#{extends 'main.html' /} #{set title:'Edit Residence (Landlord)' /}
+
+<nav class="ui inverted menu">
+	<a class="ui item" href="/">Welcome</a> <a class="ui item"
+		href="/landlords/landlord">Landlord</a> <a class="ui item"
+		href="/contact">Contact</a> <a class="ui item"
+		href="/landlords/logout">Log Out</a>
+</nav>
+
+<section class="ui segment">
+	<form class="ui form segment" class="ui form" action="/landlords/updateresidence" method="POST">
+		<h4>Please update residence data</h4>
+		<div class="ui one column grid">
+			<div class="column">
+				<!--   The monthly rent  -->
+				<div class="ui three column grid">
+					<div class="column">
+						<div class="ui form segment">
+							<div class="ui fluid labeled input">
+								<div class="ui label">Eircode</div>
+								<input readonly value="${residence.eircode}" name="eircode"
+									id="eircode" type="text">
+							</div>
+						</div>
+					</div>
+					<div class="column">
+						<div class="ui form segment">
+							<div class="ui fluid labeled input field">
+								<div class="ui label">Monthly rent (&euro;)</div>
+								<input value="${residence.rent}" id="rent" name="rent"
+									type="text">
+							</div>
+						</div>
+					</div>
+				</div>
+				<br>
+				<!--   Submit form button  -->
+				<div class="form-actions">
+					<button type="submit" class="ui blue submit button">Update
+						data</button>
+				</div>
+				<div class="ui error message"></div>
+			</div>
+		</div>
+	</form>
+</section>
+<script src="/public/javascripts/editPropertyTemplate.js"></script>
+<script src="/public/javascripts/validation.js"></script>

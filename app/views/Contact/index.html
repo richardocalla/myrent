@@ -1,0 +1,38 @@
+#{extends 'main.html' /} #{set title:'Contact' /}
+
+<nav class="ui inverted menu">
+	<a class="ui item" href="/">Welcome</a> <a class="ui active item"
+		href="/contact">Contact</a>
+</nav>
+
+<section class="ui segment">
+	<h5>We would very much appreciate if you would provide some
+		feedback.</h5>
+	<form class="ui form segment" action="/contact/sendmessage"
+		method="POST">
+		<div class="ui input field">
+			<input placeholder="Your first name" name="firstName" type="text">
+		</div>
+		<div class="ui input field">
+			<input placeholder="Your last name" name="lastName" type="text">
+		</div>
+		<div class="ui divider"></div>
+		<div class="ui input field">
+			<input placeholder="Your email address" name="email" type="text">
+		</div>
+		<div class="ui divider"></div>
+		<div class="ui form">
+			<div class="field">
+				<textarea placeholder="Your message" name="messageTxt"></textarea>
+			</div>
+		</div>
+		<div class="ui divider"></div>
+		<div class="ui four column grid">
+		<div class="ui fluid column">
+			<button type="submit" class="ui fluid blue submit button">Send Message</button>
+		</div>
+		</div>
+		<div class="ui error message"></div>
+	</form>
+</section>
+<script src="/public/javascripts/contact.js"></script>
