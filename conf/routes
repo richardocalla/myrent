@@ -47,10 +47,12 @@ GET    /admins/filter                          Administrators.filter
 GET    /admins/filterdesc                      Administrators.filterDesc
 GET    /admins/charts                          Administrators.charts
 GET    /admins/chartdata                       Administrators.chartData
+GET    /admins/signup                          Administrators.signup
 
 POST   /admins/authenticate                    Administrators.authenticate
 POST   /admins/deletelandlord                  Administrators.deleteLandlord
 POST   /admins/deletetenant                    Administrators.deleteTenant
+POST   /admins/register                        Administrators.register
 
 # Search
 POST   /search/search_results                  Search.index

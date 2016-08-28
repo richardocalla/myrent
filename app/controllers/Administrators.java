@@ -28,6 +28,15 @@ public class Administrators extends Controller {
 		}
 	}
 
+	public static void signup() {
+		render();
+	}
+
+	public static void register(Administrator administrator) {
+		administrator.save();
+		login();
+	}
+
 	public static void login() {
 		render();
 	}

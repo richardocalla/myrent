@@ -1,0 +1,24 @@
+#{extends 'main.html' /} #{set title:'Signup to MyRent' /}
+
+<section class="ui segment">
+	<h3>Administrators: Create a MyRent account</h3>
+	<h5>Register using a valid email address and password</h5>
+	<form class="ui form segment" action="/admins/register" method="POST">
+		<div class="ui two column grid">
+			<div class="column">
+				<div class="ui fluid form segment">
+					<div class="ui left icon input field">
+						<input placeholder="Email" id="email" name="administrator.email"
+							type="text"> <i class="user icon"></i>
+					</div>
+					<div class="ui left icon input field">
+						<input placeholder="Password" id="password"
+							name="administrator.password" type="password"> <i
+							class="lock icon"></i>
+					</div>
+					<button type="submit" class="ui blue submit button">Submit</button>
+				</div>
+			</div>
+		</div>
+	</form>
+</section>
