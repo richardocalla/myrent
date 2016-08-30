@@ -55,30 +55,27 @@ public class Administrators extends Controller {
 	}
 
 	/**
-	 * Utilises comparator to sort by tenant (ascending)
+	 * Filters out residences by rented status
+	 * 
+	 * @param rentedStatus
+	 *            either vacant or rented
 	 */
-	public static void byRented() {
+	public static void byRented(String rentedStatus) {
 		Landlord landlord = Landlords.getCurrentLandlord();
 		Tenant tenant = Tenants.getCurrentTenant();
-		List<Residence> residences = Residence.findAll();
+		List<Residence> residences = null;
+		if (rentedStatus != null) {
+			switch (rentedStatus) {
+			case "rented":
+				residences = Residence.findRentedResidences();
+				break;
 
-		RentedStatusComparator md = new RentedStatusComparator();
+			case "vacant":
+				residences = Residence.findVacantResidences();
+				break;
 
-		Collections.sort(residences, md);
-		render(landlord, tenant, residences);
-	}
-
-	/**
-	 * Utilises comparator to sort by tenant (descending)
-	 */
-	public static void byRentedDesc() {
-		Landlord landlord = Landlords.getCurrentLandlord();
-		Tenant tenant = Tenants.getCurrentTenant();
-		List<Residence> residences = Residence.findAll();
-
-		RentedStatusComparatorDesc md = new RentedStatusComparatorDesc();
-
-		Collections.sort(residences, md);
+			}
+		}
 		render(landlord, tenant, residences);
 	}
 

@@ -1,5 +1,6 @@
 package models;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -23,7 +24,6 @@ public class Residence extends Model {
 	public int numberBathrooms;
 	public int area; // the area of the residence in square metres
 	public String eircode;
-	public String vacancy;
 
 	@ManyToOne
 	public Landlord landlord;
@@ -31,7 +31,7 @@ public class Residence extends Model {
 	@OneToOne(mappedBy = "residence")
 	public Tenant tenant;
 
-	public Residence(String geoLocation, String vacancy, Long rent, int numberBedrooms, String residenceType,
+	public Residence(String geoLocation, Long rent, int numberBedrooms, String residenceType,
 			int numberBathrooms, int area, String eircode) {
 		this.geoLocation = geoLocation;
 		this.rent = rent;
@@ -40,7 +40,6 @@ public class Residence extends Model {
 		this.numberBathrooms = numberBathrooms;
 		this.area = area;
 		this.eircode = eircode;
-		this.vacancy = vacancy;
 		dateResidence = new Date();
 	}
 
@@ -60,6 +59,28 @@ public class Residence extends Model {
 
 	public static Residence findByEircode(String eircode) {
 		return find("eircode", eircode).first();
+	}
+
+	public static List<Residence> findVacantResidences() {
+		List<Residence> ResidenceAll = Residence.findAll();
+		List<Residence> vacant = new ArrayList();
+		for (Residence res : ResidenceAll) {
+			if (res.tenant == null) {
+				vacant.add(res);
+			}
+		}
+		return vacant;
+	}
+
+	public static List<Residence> findRentedResidences() {
+		List<Residence> ResidenceAll = Residence.findAll();
+		List<Residence> rented = new ArrayList();
+		for (Residence res : ResidenceAll) {
+			if (res.tenant != null) {
+				rented.add(res);
+			}
+		}
+		return rented;
 	}
 
 }

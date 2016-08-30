@@ -37,8 +37,7 @@ GET    /admins/login                           Administrators.login
 GET    /admins/logout                          Administrators.logout
 GET    /admins/geolocations                    Administrators.geoLocations
 GET    /admins/reports                         Administrators.reports
-GET    /admins/byrented                        Administrators.byRented
-GET    /admins/byrenteddesc                    Administrators.byRentedDesc
+GET    /admins/byrented                        Administrators.byRented(rentedStatus:String)
 GET    /admins/byresidencetype                 Administrators.byResidenceType
 GET    /admins/byresidencetypedesc             Administrators.byResidenceTypeDesc
 GET    /admins/bysortedrent                    Administrators.bySortedRent

@@ -8,9 +8,9 @@ import models.*;
 @OnApplicationStart
 public class Bootstrap extends Job {
 	public void doJob() {
-		//if (Landlord.count() == 0) {
-			//Fixtures.loadModels("data.yml");
-		//}
+		if (Landlord.count() == 0) {
+			Fixtures.loadModels("data.yml");
+		}
 	}
 	
 }
